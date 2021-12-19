@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                box-sizing: border-box; /*width 안에 padding, border포함시켜서 사용*/
+            }
+
+            body {
+                font-family: Arial;
+                padding: 10px; /* top right bottom left*/
+                background: #f1f1f1;
+               
+            }
+
+            .header {
+                padding: 30px;
+                text-align: center;
+                background: #666;
+                color: white;
+            }
+
+            .header h1 {
+                font-size: 50px;
+            }
+
+            .topnav a {
+                float: left;
+                display: block;
+                padding: 14px 16px;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            
+
+            .leftcolumn {
+                float: left;
+                width: 75%;
+                background-color: white;
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            .rightcolumn {
+                float: left;
+                width: 25%;
+                background-color: white;
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            .card {
+                border-color: white;
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            .fakeimg {
+                background-color: #aaa;
+                width: 100%;
+                padding: 20px;
+            }
+            .row::after{
+                content: "";
+                display: table;
+                clear: both;
+                
+            }
+            .footer {
+                padding: 20px;
+                text-align: center;
+                background: #ddd;
+                margin-top: 20px;
+            }
+            @media screen and (max-width: 1080px) {
+                .leftcolumn,.rightcolumn{
+                width:100%;
+                padding:0;
+                }
+            }
+        
+           
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>스프링프레임워크</h1>
+            
+        </div>
+        <div class="row">
+            <!--좌측영역-->
+            <div class="leftcolumn">
+                <class="card">
+                    <h2>DI (Dependency Injection)란?</h2>
+                    <div class="fakeimg" style="height: 200px;">
+                        의존성 주입이란 말로도 쓰이며 스프링IOC 컨테이너 핵심 개념중 하나이며<br>
+                        이미 다양한 프레임워크에 적용되어 있다.<br>
+                        객체 간의 의존 관계를 외부의 조립기가 관리<br>
+                        불필요한 의존 관계를 업애거나 줄일 수 있다.<br>
+                        단위테스트 수행이 수월하다.<br>
+                        설정파일과 어노테이션을 이용하여 객체간의 의존 관계를 설정<br>
+                        각 객체를 빈(bean)으로 관리
+                    </div>
+                
+               
+                    
+                    
+                </div>
+            </div>
+
+            <!--우측영역-->
+            <div class="rightcolumn">
+                <div class="card">
+                   
+                    <div class="fakeimg" style="height: 100px;">Image</div>
+                    <p></p>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        <div class="footer">
+            <h2>2021.화면설계</h2>
+        </div>
+    </body>
+</html>

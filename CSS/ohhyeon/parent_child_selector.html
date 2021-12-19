@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul li{ <--부모와 자손 관계 선택자
+        color: red;
+    }
+    #legture>li{  <--부모와 자식 관계 선택자
+        border: 1px solid red;
+    }
+    ul,ol{ <--대등관계
+        background-color: powderblue;
+    }
+    
+</style>
+<body>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <ol id="legture">
+        <li>HTML</li>
+        
+        <li>CSS
+        <ol> 
+            <li>selector</li>
+            <li>declaration</li>
+        </ol>
+        <li>JavaScript</li>
+    </ol>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add(num1,num2){
+        document.write("<h2>"+num1 + "+" + num2 + "=" + (num1+num2)+"</h2>");
+        }
+
+        function substract(num1,num2){
+            document.write("<h2>"+num1 + "-" + num2+ "="+(num1-num2)+"</h2>");
+        }
+        function multiply(num1,num2){
+            document.write(num1 + "*"+ num2 +"="+ (num1*num2)+"<br>");
+
+        }
+        function devide(num1,num2){
+            document.write(num1 + "/" + num2 +"="+ (num1 / num2)+"<br>");
+
+        }
+        function remainder(num1,num2){
+            document.write(num1 + "%" + num2+"="+(num1%num2)+"<br>");
+        }
+        </script>
+</head>
+
+<body>
+    <script>
+        let x ,y;
+        x = 10; y = 20;
+        add(x, y);
+        substract(x,y);
+        multiply(x,y);
+        devide(x,y);
+        remainder(x,y);
+    </script>
+</body>
+</html>

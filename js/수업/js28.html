@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "demo"></p>
+    <script>
+       //json object 형태의 문자열을 저장 
+       //제이슨 오브젝트 문자열 -> 자바스크립트 오브젝트로 변환 가능 
+        let txt = '{"type":"Fiat", "medel":"500", "color":"white"}';
+
+        //const car = {type:"Fiat",model:"500",color:"white"};
+        const car = JSON.parse(txt);
+        document.getElementById("demo").innerHTML = car.type;
+    </script>
+    
+</body>
+</html>

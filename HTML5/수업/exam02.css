@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;  
+}
+
+header {
+    padding: 20px;
+    background-color: #666;
+    color: white;
+    height: 300px;
+    text-align: center;
+}
+
+footer {
+    padding-top: 40px;
+    background-color: #666;
+    color: white;
+    height: 100px;
+    text-align: center;
+}
+
+.topnav {
+    text-align: right;
+}
+
+.topnav a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.row {
+    height: 400px;
+    margin: 0px;
+}
+
+#col1 {
+    background-color: #f1f1f1;
+    float: left;
+    width: 75%;
+    height: 100%;
+    padding: 20px;
+}
+
+#col2 {
+    background-color: #ccc;
+    float: left;
+    width: 25%;
+    height: 100%;
+    padding: 20px;
+}
+
+#col2 a {
+    color:blue;
+}

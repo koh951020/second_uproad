@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 유효성검사</title>
+    <style>
+        form {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 700px;
+        }
+        
+        div {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        th{
+          background-color: gray;
+        }
+        
+        
+        </style>
+    <script>
+        // 전체 유효성검사 함수
+        function sendit() {
+
+            //정규식 구문
+            let reg_id = /^[a-zA-Z0-9]{6,12}$/;  //아이디, 비번 같이 사용
+            let reg_email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+            let reg_phone = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;
+
+
+            let u_name      = document.getElementById("u_name");
+            let u_id        = document.getElementById("u_id");
+            let u_pw        = document.getElementById("u_pw");
+            let u_repw      = document.getElementById("u_repw");
+            let u_birthday = document.getElementById("u_birthday");
+
+            let u_gender = document.getElementsByName("u_gender");
+
+            let u_phone1 = document.getElementById("u_phone1");
+            let u_phone2 = document.getElementById("u_phone2");
+            let u_phone3 = document.getElementById("u_phone3");
+
+            let u_phone = u_phone1.value + u_phone2.value + u_phone3.value; 
+
+            if (check_validate(u_name, "이름 입력하세요") == false) { return false; }
+            
+            if (reg_validate(reg_id, u_id, "아이디는 알파벳 대소문자, 숫자를 6~12 이내로 입력요망 ") == false) { return false; }
+            if (reg_validate(reg_id, u_pw, "비밀번호는 알파벳 대소문자, 숫자를 6~12 이내로 입력요망 ") == false) { return false; }
+            
+
+            // duplicate_userid() 호출이 연관
+            if (is_Check == false) { alert('아이디 중복체크하세요.'); return false; }
+
+            if (u_gender[0].checked == false && u_gender[1].checked == false) {
+                alert("성별을 선택하세요");
+                return false;
+            }
+
+            if (reg_phone.test(u_phone) == false) {
+                alert("휴대폰 번호를 정확히 입력하세요");
+                return false;
+            }
+            
+            
+            return false;  
+        }
+
+        function check_validate(taget_id, msg) {
+            if (taget_id.value == "") {
+                alert(msg);
+                taget_id.focus();
+                return false;
+            }
+        }
+
+
+        function reg_validate(reg_ex, target_id, msg) {
+            if (reg_ex.test(target_id.value) == false) {
+                alert(msg);
+                target_id.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+
+        var is_Check = false;
+     
+        function duplicate_userid() {
+
+           
+            var isUseID = true;
+
+            if (isUseID == true) {
+                is_Check = true;
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+   
+    <form method="post" action="" onsubmit="return sendit();">
+       
+        이름 <input type="text" name="u_name" id="u_name" /><br />
+        아이디 <input type="text" name="u_id" id="u_id" />
+            <input type="button" value="ID중복체크"  onclick="duplicate_userid();"/>
+        <br />
+        비밀번호<input type="password" name="u_pw" id="u_pw" /><br />
+        비번확인 <input type="password" name="u_repw" id="u_repw" /><br />
+        생년월일<input type="text" name="u_birthday" id="u_birthday" /><br />
+        성별 남자<input type="radio" name="u_gender" value="male" />
+        여자<input type="radio" name="u_gender" value="female" /><br />
+        핸드폰 <input type="text" id="u_phone1" />-<input type="text" id="u_phone2" />-<input type="text" id="u_phone3" /><br>
+        우편번호<input type="text" id="u_zipcode" placeholder="우편번호">
+        <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
+        <input type="text" id="u_addr1" placeholder="주소"><br>
+        <input type="text" id="u_addr2" placeholder="상세주소">
+        <input type="hidden" id="sample2_extraAddress" placeholder="참고항목"><br />
+        <input type="submit" value="회원가입" />
+    
+    </form>
+
+
+    <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        // 우편번호 찾기 화면을 넣을 element
+        var element_layer = document.getElementById('layer');
+
+        function closeDaumPostcode() {
+            // iframe을 넣은 element를 안보이게 한다.
+            element_layer.style.display = 'none';
+        }
+
+        function sample2_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === 'R') {
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                    
+                        document.getElementById("sample2_extraAddress").value = extraAddr;
+
+                    } else {
+                        document.getElementById("sample2_extraAddress").value = '';
+                    }
+
+                
+                    document.getElementById('u_zipcode').value = data.zonecode;
+                    document.getElementById("u_addr1").value = addr;
+                   
+                    document.getElementById("u_addr2").focus();
+
+                   
+                    element_layer.style.display = 'none';
+                },
+                width: '100%',
+                height: '100%',
+                maxSuggestItems: 5
+            }).embed(element_layer);
+
+           
+            element_layer.style.display = 'block';
+
+           
+            initLayerPosition();
+        }
+
+      
+        function initLayerPosition() {
+            var width = 300; 
+            var height = 400; 
+            var borderWidth = 5; 
+
+           
+            element_layer.style.width = width + 'px';
+            element_layer.style.height = height + 'px';
+            element_layer.style.border = borderWidth + 'px solid';
+            
+            element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth) + 'px';
+            element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth) + 'px';
+        }
+    </script>
+</body>
+</html>

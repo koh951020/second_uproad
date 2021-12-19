@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utp-8">
+        <title>회원가입</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+        <script>
+        $( function() {
+        $( "#datepicker" ).datepicker();
+        } );
+        </script>
+
+    </head>
+        <body>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>기본정보</legend>
+            <p>
+        <label for="name">이름</label> 
+         <input id= "name" type = "text" name="mb_name">
+       </p>
+      <p>
+        <label for="password">비밀번호</label> 
+        <input id= "password" type = "password" name="mb_pw">
+      </P>
+      <p>
+        <label for="password">비밀번호 확인</label> 
+        <input id= "password" type = "password" name="mb_pw">
+      </P>
+      <p>
+      <label for="datepicker">생년월일</label>
+      <input type="text" id="datepicker" name="mb_date">
+      <label for="male">남성</label>
+      <input id="male" type = "radio" value="남성" name = "sex">
+
+      <label for="female">여성</label>
+      <input id="female" type = "radio" value="여성" name = "sex">
+     </p>
+     <p>
+        <label for="email">이메일</label> 
+        <input id= "email" type = "text" name="mb_email"> @ <input id = "text" type="text">
+            <select email="email"
+            <option value="s">직접입력</option>
+            <option value="s">직접입력</option>
+            <option value="n">naver.com</option>
+            <option value="d">daum.net</option>
+            <option value="na">nate.com</option>
+            <option value="h">hanmeil.net</option>
+        </label>
+      </p>
+      <p>
+        <input type="submit" value = "인증코드">
+      </p>
+      <p>
+      <input id= "code" type = "text" name="mb_code">   <input type="submit" value = "인증확인">
+      </p>
+      <p>
+        <label for="tel">연락처</label> 
+        <input id= "tel" type = "tel" name="mb_tel">   
+      </p>
+      <p>
+          <label for= "adress"> 우편번호 </label> 
+          <input id="adress" type="aderess" name="mb_adress">
+          <input type="submit" value = "주소검색">
+    </p>
+    <p>
+        <label for= "adress"> 주소 </label>
+        <input id="adress" type="aderess" name="mb_adress">
+    </p>
+    <p>
+        <label for= "info"> 정보수신여부 </label>
+        <h>서비스 및 이벤트 소식을 <input type="radio" value="email">email로 수신하겠습니다 <input type="radio" value="SMS">SMS로 수신하겠습니다 </h>
+
+    </p>
+    </fieldset>
+      </form>
+        </body>
+   
+</html>

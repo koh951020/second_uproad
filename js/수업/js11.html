@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function add(num1,num2){
+            return num1 + num2;
+        }
+
+        function substract(num1, num2){
+            return num1 - num2;
+        }
+
+        function multiply(num1, num2){
+            return num1 * num2;
+        }
+
+        function divide(num1, num2){
+            return num1 / num2;
+        }
+
+        function remainder(num1, num2){
+            return num1 % num2;
+        }
+    </script>
+</head>
+<body>
+   결과값: <p id = "result"></p>
+   <button type="button" onclick="document.getElementById('result').innerHTML=add(10, 20)">더하기(add(10, 20))</button><br>
+   <button type="button" onclick="document.getElementById('result').innerHTML=substract(10, 20)">빼기(substract(10, 20))</button><br>
+   <button type="button" onclick="document.getElementById('result').innerHTML=multiply(10, 20)">곱하기(multiply(10, 20))</button><br>
+   <button type="button" onclick="document.getElementById('result').innerHTML=devide(10, 20)">나누기(devide(10, 20))</button><br>
+   <button type="button" onclick="document.getElementById('result').innerHTML=remainder(10, 20)">나머지(remainder(10, 20))</button><br>
+</body>
+</html>

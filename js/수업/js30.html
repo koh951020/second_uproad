@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "intro">Hello</p>
+    <script>
+        const element = document.getElementById("intro");
+        if(element == null){
+            alert("참조하는 intro 가 없다.");
+        }else{
+            alert(document.getElementById("intro").innerHTML);
+        }
+    </script>
+</body>
+</html>

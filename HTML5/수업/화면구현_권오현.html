@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>회원가입-자바스크립트</title>
+    <script language="javascript">
+   function validate() {
+       let re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+       let re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+       // 이메일이 적합한지 검사할 정규식
+
+       let id = document.getElementById("id");
+       let pw = document.getElementById("pw");
+       let email = document.getElementById("email");
+       let num1 = document.getElementById("num1");
+       let num2 = document.getElementById("num2");// var 대신 let 쓰기 
+
+       let arrNum1 = new Array(); // 주민번호 앞자리숫자 6개를 담을 배열
+       let arrNum2 = new Array(); // 주민번호 뒷자리숫자 7개를 담을 배열
+
+       // ------------ 이메일 까지 -----------
+
+       if(!check(re,id,"아이디는 4~12자의 영문 대소문자와 숫자로만 입력")) {
+           return false;
+       }
+
+       if(!check(re,pw,"패스워드는 4~12자의 영문 대소문자와 숫자로만 입력")) {
+           return false;
+       }
+
+       if(join.pw.value != join.checkpw.value) {
+           alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
+           join.checkpw.value = "";
+           join.checkpw.focus();
+           return false;
+       }
+
+       if(email.value=="") {
+           alert("이메일을 입력해 주세요");
+           email.focus();
+           return false;
+       }
+
+       if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+           return false;
+       }
+
+       if(join.name.value=="") {
+           alert("이름을 입력해 주세요");
+           join.name.focus();
+           return false;
+       }
+
+  
+
+       // 관심분야, 자기소개 미입력시 하라는 메시지 출력
+       if(join.inter[0].checked==false &&
+           join.inter[1].checked==false &&
+           join.inter[2].checked==false &&
+           join.inter[3].checked==false &&
+           join.inter[4].checked==false) {
+           alert("관심분야를 골라주세요");
+           return false;
+       }
+
+       if(join.self.value=="") {
+           alert("자기소개를 적어주세요");
+           join.self.focus();
+           return false;
+       }
+
+       alert("회원가입이 완료되었습니다.");
+   }
+// 필드 중에 정규식 검사가 필요한 것은 아래 함수를 사용 . 
+   function check(re, what, message) {
+       if(re.test(what.value)) {
+           return true;
+       }
+       alert(message);
+       what.value = "";
+       what.focus();
+       //return false;
+   }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+        body {
+            font-family: 'Do Hyeon', sans-serif;
+
+        }
+        tr{
+            font-size: 14px;
+           
+
+        }
+       
+        
+    </style>
+</head>
+<body>
+   
+    <form name="join" onsubmit="return validate();" action="" method="post">
+        <table width="600" height="400" border="1" align="center" cellspacing="0">
+            <tr height="10" align="left">
+                <td padding="3px" colspan="2" style="background:white;"><font color=black><b>기본정보</b></font></td>
+            </tr>
+            <tr>
+                <td><b>이름 :</b></td>
+                <td style="font-size: 8px;"><input type="text" style="width:170px" id="id" name="id" maxlength="12" /> </td>
+            </tr>
+            <tr>
+                <td><b>아이디:</b></td>
+                <td style="font-size: 8px;"><input type="text" style="width:170px" id="id" name="id" maxlength="16" /> <br>※4-12자의 영문 대소문자와 숫자로만 입력</td>
+            </tr>
+            <tr>
+                <td><b>비밀번호:</b></td>
+                <td style="font-size: 8px;"><input type="password" style="width:170px" id="pw" maxlength="16" /> <br>※6-16자리의 숫자,영문자(대,소문자) 및 특수문자 사용 가능합니다<br>3자리 연속,아이디를 사용할 수 없습니다.<br>※4-12자의 영문 대소문자와 숫자로만 입력</td>
+            </tr>
+            <tr>
+                <td><b>비밀번호 확인:</b></td>
+                <td><input type="password" style="width:170px" id="checkpw" maxlength="12" /></td>
+            </tr>
+            <tr>
+                <th> 생년월일/성별
+            <td> <label for="datepicker"></label>
+             <input type="text" id="datepicker" name="mb_date">
+             <label for="male">남성</label>
+             <input id="male" type = "radio" value="남성" name = "sex">
+             <label for="female">여성</label>
+             <input id="female" type = "radio" value="여성" name = "sex">
+             </td>
+             </th>  
+             </tr>
+             <tr>
+                <th>이메일</th>
+                <td>
+                  <input type='text' name="email">@
+                  <input type='text' name="email_dns">
+                    <select name="emailaddr">
+                       <option value="">직접입력</option>
+                       <option value="daum.net">daum.net</option>
+                       <option value="empal.com">empal.com</option>
+                       <option value="gmail.com">gmail.com</option>
+                       <option value="hanmail.net">hanmail.net</option>
+                       <option value="msn.com">msn.com</option>
+                       <option value="naver.com">naver.com</option>
+                       <option value="nate.com">nate.com</option>
+                    </select>
+                  </td>
+               </tr>
+               <tr>
+                <th>연락처</th>
+                
+                <td> 휴대전화 <input type="text"name="cel1"> -
+                      <input type="text" name="cel2_1" title="전화번호"> -
+                      <input type="text" name="cel2_2">
+                   </td>
+               </tr>
+               <tr>
+                <td>우편번호<input type="text" id="u_zipcode" placeholder="우편번호">
+                <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input type="text" id="u_addr1" placeholder="주소"><br>
+                <input type="text" id="u_addr2" placeholder="상세주소">ont-size: 8px;"><input type="addr" style="width:170px" id="addr" /> </td>
+            </td>
+            </tr>
+           
+            <tr>
+                <td><b>정보수신여부:</b></td>
+                <td>
+                   서비스 및 이벤트 소식을 email <input type="checkbox" name="inter" value="E-mail">
+                    SNS<input type="checkbox" name="inter" value="SNS">로 받겠습니다
+                   
+                </td>
+            </tr>
+           
+        </table>
+        <center>
+            <br />
+            <input type="submit" value="회원가입" style="border-radius:5px;" />
+            <input type="reset" value="다시입력" style="border-radius:5px;" />
+        </center>
+    </form>
+</body>
+</html>
